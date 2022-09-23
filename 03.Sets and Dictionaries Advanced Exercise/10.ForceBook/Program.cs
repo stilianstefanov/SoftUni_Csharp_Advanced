@@ -59,7 +59,7 @@ namespace _10.ForceBook
                 if (side.Users.Count > 0)
                 {
                     Console.WriteLine($"Side: {side.Name}, Members: {side.Users.Count}");
-                    foreach (var user in side.Users.OrderBy(user => user))
+                    foreach (var user in side.Users)
                     {
                         Console.WriteLine($"! {user}");
                     }
@@ -82,11 +82,11 @@ namespace _10.ForceBook
         public ForceSide(string name)
         {
             Name = name;
-            Users = new HashSet<string>();
+            Users = new SortedSet<string>();
         }
 
         public string Name { get; set; }
-        public HashSet<string> Users { get; set; }
+        public SortedSet<string> Users { get; set; }
     }
 
 }
