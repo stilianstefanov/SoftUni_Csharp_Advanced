@@ -33,8 +33,9 @@
                                 line = line.Replace(charsToReplace[i], '@');
                             }
                         }
-                        string[] splittedLine = line.Split(" ", StringSplitOptions.RemoveEmptyEntries);
-                        Array.Reverse(splittedLine);
+                        string[] splittedLine = line.Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                            .Reverse()
+                            .ToArray();
                         result += $"{string.Join(" ", splittedLine)}\n";
                     }
                     counter++;
