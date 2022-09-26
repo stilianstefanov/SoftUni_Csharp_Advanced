@@ -2,6 +2,7 @@
 {
     using System;
     using System.IO;
+    using System.Linq;
 
     public class LineNumbers
     {
@@ -22,20 +23,9 @@
             for (int i = 0; i < inputText.Length; i++)
             {
                 string line = inputText[i];
-                int lettersCnt = 0;
-                int marksCnt = 0;
-
-                for (int j = 0; j < line.Length; j++)
-                {
-                    if (char.IsLetter(line[j]))
-                    {
-                        lettersCnt++;
-                    }
-                    else if (!char.IsLetter(line[j]) && line[j] != ' ')
-                    {
-                        marksCnt++;
-                    }
-                }
+                int lettersCnt = line.Count(ch => char.IsLetter(ch));
+                int marksCnt = line.Count(ch => char.IsPunctuation(ch));
+                
                 line = line.Insert(0, $"Line {counter}: ");
                 line += $"({lettersCnt})({marksCnt})";                
                 outputText[i] = line;
