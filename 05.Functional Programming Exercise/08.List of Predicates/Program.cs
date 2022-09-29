@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _08.List_of_Predicates
+{
+    internal class Program
+    {
+        static Func<int, int, bool> IsDivisable = (x, y) => x % y == 0;
+        static Action<List<int>> Print = l => Console.Write(string.Join(" ", l));
+        
+        static void Main(string[] args)
+        {
+            int rangeEnd = int.Parse(Console.ReadLine());
+            int[] dividers = Console.ReadLine()
+                .Split()
+                .Select(int.Parse)
+                .ToArray();
+            List<int> output =new List<int>();
+            CheckNumbers(rangeEnd, dividers, output);
+            Print(output);
+        }
+
+        private static void CheckNumbers(int rangeEnd, int[] dividers, List<int> output)
+        {            
+            for (int curNum = 1; curNum <= rangeEnd; curNum++)
+            {
+                bool isDivisableByAll = true;
+                for (int i = 0; i < dividers.Length; i++)
+                {                    
+                    if (!IsDivisable(curNum, dividers[i]))
+                    {
+                        isDivisableByAll = false;
+                        break;
+                    }
+                }
+                if (isDivisableByAll)
+                {
+                    output.Add(curNum);
+                }
+            }              
+        }
+    }
+}
