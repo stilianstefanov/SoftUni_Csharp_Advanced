@@ -1,3 +1,2 @@
-# SoftUni_Csharp_Advanced
-Some C# Problems and Exercises \r\n
+# SoftUni C# Advanced Problems and Exercises 
 Please see the .docx file in each folder for the problems description.
