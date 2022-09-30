@@ -6,10 +6,10 @@ namespace _05.Applied_Arithmetics
 {
     internal class Program
     {
-        static Func<int, int> Add = x => ++x;
-        static Func<int, int> Subtract = x => --x;
-        static Func<int, int> Multiply = x => x * 2;
-        static Action<int[]> Print = x => Console.WriteLine(string.Join(" ", x));
+        static Func<int, int> add = x => ++x;
+        static Func<int, int> subtract = x => --x;
+        static Func<int, int> multiply = x => x * 2;
+        static Action<int[]> print = x => Console.WriteLine(string.Join(" ", x));
         static void Main(string[] args)
         {
             int[] numbers = Console.ReadLine()
@@ -25,16 +25,16 @@ namespace _05.Applied_Arithmetics
             switch (command)
             {
                 case "add":
-                    numbers = numbers.Select(x => Add(x)).ToArray();
+                    numbers = numbers.Select(x => add(x)).ToArray();
                     break;
                 case "subtract":
-                    numbers = numbers.Select(x => Subtract(x)).ToArray();
+                    numbers = numbers.Select(x => subtract(x)).ToArray();
                     break;
                 case "multiply":
-                    numbers = numbers.Select(x => Multiply(x)).ToArray();
+                    numbers = numbers.Select(x => multiply(x)).ToArray();
                     break;
                 case "print":
-                    Print(numbers);
+                    print(numbers);
                     break;
                 case "end":
                     return;                    

@@ -5,10 +5,10 @@ namespace _03.Custom_Min_Function
 {
     internal class Program
     {
-        static Func<string[], int> Cmin = arr => arr.Select(int.Parse).Min();
+        static Func<string[], int> cmin = arr => arr.Select(int.Parse).Min();
         static void Main(string[] args)
         {
-            Console.WriteLine(Cmin(Console.ReadLine()
+            Console.WriteLine(cmin(Console.ReadLine()
                 .Split(" ", StringSplitOptions.RemoveEmptyEntries)));
         }
     }

@@ -7,11 +7,11 @@ namespace _09.Predicate_Party_
     internal class Program
     {
 
-        static Action<List<string>, int> RemoveLength = (l, x) => l.RemoveAll(w => w.Length == x);
-        static Action<List<string>, string> RemoveEnd = (l, s) => l.RemoveAll(w => w.EndsWith(s));
-        static Action<List<string>, string> RemoveStart = (l, s) => l.RemoveAll(w => w.StartsWith(s));
+        static Action<List<string>, int> removeLength = (l, x) => l.RemoveAll(w => w.Length == x);
+        static Action<List<string>, string> removeEnd = (l, s) => l.RemoveAll(w => w.EndsWith(s));
+        static Action<List<string>, string> removeStart = (l, s) => l.RemoveAll(w => w.StartsWith(s));
 
-        static Action<List<string>, string> DoubleStart = (l, s) =>
+        static Action<List<string>, string> doubleStart = (l, s) =>
         {
             for (int i = 0; i < l.Count; i++)
             {
@@ -22,7 +22,7 @@ namespace _09.Predicate_Party_
                 }
             }
         };
-        static Action<List<string>, string> DoubleEnd = (l, s) =>
+        static Action<List<string>, string> doubleEnd = (l, s) =>
         {
             for (int i = 0; i < l.Count; i++)
             {
@@ -33,7 +33,7 @@ namespace _09.Predicate_Party_
                 }
             }
         };
-        static Action<List<string>, int> DoubleLength = (l, x) =>
+        static Action<List<string>, int> doubleLength = (l, x) =>
         {
             for (int i = 0; i < l.Count; i++)
             {
@@ -45,10 +45,10 @@ namespace _09.Predicate_Party_
             }
         };
 
-        static Predicate<List<string>> IsEmpty = l => l.Count == 0;
-        static Action<List<string>> Print = l =>
+        static Predicate<List<string>> isEmpty = l => l.Count == 0;
+        static Action<List<string>> print = l =>
         {
-            if (IsEmpty(l))
+            if (isEmpty(l))
             {
                 Console.WriteLine("Nobody is going to the party!");
             }
@@ -63,7 +63,7 @@ namespace _09.Predicate_Party_
                 .Split(" ", StringSplitOptions.RemoveEmptyEntries)
                 .ToList();
             Manipulate(Console.ReadLine(), people);
-            Print(people);
+            print(people);
         }
 
         private static void Manipulate(string command, List<string> people)
@@ -74,13 +74,13 @@ namespace _09.Predicate_Party_
                 switch (tokens[1])
                 {
                     case "StartsWith":
-                        RemoveStart(people, tokens[2]);
+                        removeStart(people, tokens[2]);
                         break;
                     case "EndsWith":
-                        RemoveEnd(people, tokens[2]);
+                        removeEnd(people, tokens[2]);
                         break;
                     case "Length":
-                        RemoveLength(people, int.Parse(tokens[2]));
+                        removeLength(people, int.Parse(tokens[2]));
                         break;
                 }
             }
@@ -90,13 +90,13 @@ namespace _09.Predicate_Party_
                 switch (tokens[1])
                 {
                     case "StartsWith":
-                        DoubleStart(people, tokens[2]);
+                        doubleStart(people, tokens[2]);
                         break;
                     case "EndsWith":
-                        DoubleEnd(people, tokens[2]);
+                        doubleEnd(people, tokens[2]);
                         break;
                     case "Length":
-                        DoubleLength(people, int.Parse(tokens[2]));
+                        doubleLength(people, int.Parse(tokens[2]));
                         break;
                 }
             }

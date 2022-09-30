@@ -6,8 +6,8 @@ namespace _08.List_of_Predicates
 {
     internal class Program
     {
-        static Func<int, int, bool> IsDivisable = (x, y) => x % y == 0;
-        static Action<List<int>> Print = l => Console.Write(string.Join(" ", l));
+        static Func<int, int, bool> isDivisable = (x, y) => x % y == 0;
+        static Action<List<int>> print = l => Console.Write(string.Join(" ", l));
         
         static void Main(string[] args)
         {
@@ -18,7 +18,7 @@ namespace _08.List_of_Predicates
                 .ToArray();
             List<int> output =new List<int>();
             CheckNumbers(rangeEnd, dividers, output);
-            Print(output);
+            print(output);
         }
 
         private static void CheckNumbers(int rangeEnd, int[] dividers, List<int> output)
@@ -28,7 +28,7 @@ namespace _08.List_of_Predicates
                 bool isDivisableByAll = true;
                 for (int i = 0; i < dividers.Length; i++)
                 {                    
-                    if (!IsDivisable(curNum, dividers[i]))
+                    if (!isDivisable(curNum, dividers[i]))
                     {
                         isDivisableByAll = false;
                         break;
