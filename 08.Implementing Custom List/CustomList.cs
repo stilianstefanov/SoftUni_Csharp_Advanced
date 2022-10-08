@@ -3,19 +3,19 @@
 
 namespace _08.Implementing_Custom_List
 {
-    public class CustomList
+    public class CustomList<T>
     {
-        private int[] internalArray;
+        private T[] internalArray;
         private const int initialCapacity = 4;
 
         public CustomList()
         {
-            this.internalArray = new int[initialCapacity];
+            this.internalArray = new T[initialCapacity];
         }
         public int Capacity { get { return this.internalArray.Length; } }
         public int Count { get; private set; }
 
-        public int this[int index]
+        public T this[int index]
         {
             get
             {
@@ -28,7 +28,7 @@ namespace _08.Implementing_Custom_List
                 this.internalArray[index] = value;
             }
         }
-        public void Add(int value)
+        public void Add(T value)
         {
             if (this.Count == this.Capacity)
             {
@@ -37,36 +37,23 @@ namespace _08.Implementing_Custom_List
             this.internalArray[this.Count] = value;
             this.Count++;
         }
-        public void AddRange(int[] range)
+        public void AddRange(T[] range)
         {
             for (int i = 0; i < range.Length; i++)
             {
                 Add(range[i]);
             }
         }
-        public bool Contains(int value)
-        {
-            bool contains = false;
-            for (int i = 0; i < internalArray.Length; i++)
-            {
-                if (this.internalArray[i] == value)
-                {
-                    contains = true;
-                    break;
-                }
-            }
-
-            return contains;
-        }
+   
         public void RemoveAt(int index)
         {
             CheckValid(index);
-            this.internalArray[index] = default(int);
+            this.internalArray[index] = default(T);
             ShiftLeft(index);
             this.Count--;
         }
 
-        public void Insert(int index, int value)
+        public void Insert(int index, T value)
         {
             CheckValid(index);
             if (this.Count == this.Capacity)
@@ -81,12 +68,12 @@ namespace _08.Implementing_Custom_List
             CheckValid(index1);
             CheckValid(index2);
 
-            int temp = this.internalArray[index1];
+            T temp = this.internalArray[index1];
             this.internalArray[index1] = this.internalArray[index2];
             this.internalArray[index2] = temp;
         }
 
-        public void ForEach(Action<int> callBack)
+        public void ForEach(Action<T> callBack)
         {
             for (int i = 0; i < Count; i++)
             {
@@ -96,7 +83,7 @@ namespace _08.Implementing_Custom_List
 
         private void Resize()
         {
-            int[] copy = new int[this.Capacity * 2];
+            T[] copy = new T[this.Capacity * 2];
 
             for (int i = 0; i < this.Count; i++)
             {
