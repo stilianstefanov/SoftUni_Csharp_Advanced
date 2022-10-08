@@ -6,7 +6,7 @@ namespace _07.Implementing_LinkedList
     {
         static void Main(string[] args)
         {
-            CustomLinkedList linkedList = new CustomLinkedList();
+            CustomLinkedList<int> linkedList = new CustomLinkedList<int>();
 
             linkedList.AddLast(1);
             linkedList.AddLast(2);

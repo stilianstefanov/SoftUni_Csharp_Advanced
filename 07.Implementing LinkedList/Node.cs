@@ -4,14 +4,14 @@ using System.Text;
 
 namespace _07.Implementing_LinkedList
 {
-    public class Node
+    public class Node<T>
     {
-        public Node(int value)
+        public Node(T value)
         {
             this.Value = value;
         }
-        public int Value { get; set; }
-        public Node Next { get; set; }
-        public Node Previous { get; set; }
+        public T Value { get; set; }
+        public Node<T> Next { get; set; }
+        public Node<T> Previous { get; set; }
     }
 }

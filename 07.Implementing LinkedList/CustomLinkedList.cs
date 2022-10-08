@@ -5,15 +5,15 @@ using System.Xml.Linq;
 
 namespace _07.Implementing_LinkedList
 {
-    public class CustomLinkedList
+    public class CustomLinkedList<T>
     {
-        public Node Head { get; set; }
-        public Node Tail { get; set; }
+        public Node<T> Head { get; set; }
+        public Node<T> Tail { get; set; }
         public int Count { get; set; }
 
-        public void AddLast(int value)
+        public void AddLast(T value)
         {
-            Node node = new Node(value);
+            Node<T> node = new Node<T>(value);
 
             if (this.Head == null)
             {
@@ -28,9 +28,9 @@ namespace _07.Implementing_LinkedList
             this.Tail = node;
             this.Count++;
         }
-        public void AddFirst(int value)
+        public void AddFirst(T value)
         {
-            Node node = new Node(value);
+            Node<T> node = new Node<T>(value);
 
             if (this.Head == null)
             {
@@ -46,9 +46,9 @@ namespace _07.Implementing_LinkedList
             this.Count++;
         }
 
-        public int RemoveFirst()
+        public T RemoveFirst()
         {
-            Node nodeToRemove = this.Head;
+            Node<T> nodeToRemove = this.Head;
             this.Head = nodeToRemove.Next;
             nodeToRemove.Next = null;
             this.Head.Previous = null;
@@ -58,9 +58,9 @@ namespace _07.Implementing_LinkedList
             return nodeToRemove.Value;
         }
 
-        public int RemoveLast()
+        public T RemoveLast()
         {
-            Node nodeToRemove = this.Tail;
+            Node<T> nodeToRemove = this.Tail;
             this.Tail = nodeToRemove.Previous;
             nodeToRemove.Previous = null;
             this.Tail.Next = null;
@@ -70,9 +70,9 @@ namespace _07.Implementing_LinkedList
             return nodeToRemove.Value;
         }
 
-        public void ForEach(Action<int> callback)
+        public void ForEach(Action<T> callback)
         {
-            Node node = this.Head;
+            Node<T> node = this.Head;
             while (node != null)
             {
                 callback(node.Value);
@@ -80,12 +80,12 @@ namespace _07.Implementing_LinkedList
             }
         }
 
-        public int[] ToArray()
+        public T[] ToArray()
         {
-            int[] array = new int[this.Count];
+            T[] array = new T[this.Count];
             int index = 0;
 
-            Node currentNode = this.Head;
+            Node<T> currentNode = this.Head;
             while (currentNode != null)
             {
                 array[index] = currentNode.Value;
