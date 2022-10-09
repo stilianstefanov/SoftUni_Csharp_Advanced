@@ -12,18 +12,18 @@ namespace GenericBoxofString
         {
             int inputCnt = int.Parse(Console.ReadLine());
 
-            List<Box<double>> list = new List<Box<double>>();
+            List<Box<double>> items = new List<Box<double>>();
 
             for (int i = 0; i < inputCnt; i++)
             {
                 string input = Console.ReadLine();
 
                 Box<double> box = new Box<double>(double.Parse(input));
-                list.Add(box);
+                items.Add(box);
             }
             double elementInfo = double.Parse(Console.ReadLine());
 
-            Console.WriteLine(Box<double>.GetCountOfLargerElements(list, elementInfo));
+            Console.WriteLine(Box<double>.GetCountOfLargerElements(items, elementInfo));
         }
         
        
