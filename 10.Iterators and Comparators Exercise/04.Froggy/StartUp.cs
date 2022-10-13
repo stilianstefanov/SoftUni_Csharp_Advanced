@@ -12,16 +12,9 @@ namespace _04.Froggy
                 .Select(int.Parse)
                 .ToArray();
 
-            Lake lake = new Lake(input);
+            Lake lake = new Lake(input);           
 
-            List<int> output = new List<int>();
-
-            foreach (var item in lake)
-            {
-                output.Add(item);
-            }
-
-            Console.WriteLine(string.Join(", ", output));
+            Console.WriteLine(string.Join(", ", lake));
         }
     }
 }
