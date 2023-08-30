@@ -7,7 +7,7 @@ namespace _02.Rally_Racing
     {
         static void Main(string[] args)
         {
-            int size = int.Parse(Console.ReadLine());
+            int size = int.Parse(Console.ReadLine()!);
             string carNumber = Console.ReadLine();
 
             char[,] matrix = new char[size, size];
@@ -23,7 +23,7 @@ namespace _02.Rally_Racing
 
             for (int row = 0; row < size; row++)
             {
-                char[] curRow = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                char[] curRow = Console.ReadLine()!.Split(" ", StringSplitOptions.RemoveEmptyEntries)
                     .Select(char.Parse).ToArray();
                 for (int col = 0; col < size; col++)
                 {                    
@@ -41,7 +41,7 @@ namespace _02.Rally_Racing
                 }
             }
 
-            int kilometersTravelled = 0;
+            int kilometersTraveled = 0;
             bool hasFinished = false;
 
             string command;
@@ -54,29 +54,29 @@ namespace _02.Rally_Racing
                 {
                     case "up":
                         newPlayerRow--;
-                        MovePlayer(ref newPlayerRow, ref newPlayerCol, matrix, ref kilometersTravelled, ref hasFinished, firstSpecialRow, firstSpecialCol, secondSpecialRow, secondSpecialCol);
+                        MovePlayer(ref newPlayerRow, ref newPlayerCol, matrix, ref kilometersTraveled, ref hasFinished, firstSpecialRow, firstSpecialCol, secondSpecialRow, secondSpecialCol);
                       
                         break;
                     case "down":
                         newPlayerRow++;
-                        MovePlayer(ref newPlayerRow, ref newPlayerCol, matrix, ref kilometersTravelled, ref hasFinished, firstSpecialRow, firstSpecialCol, secondSpecialRow, secondSpecialCol);
+                        MovePlayer(ref newPlayerRow, ref newPlayerCol, matrix, ref kilometersTraveled, ref hasFinished, firstSpecialRow, firstSpecialCol, secondSpecialRow, secondSpecialCol);
                         
                         break;
                     case "left":
                         newPlayerCol--;
-                        MovePlayer(ref newPlayerRow, ref newPlayerCol, matrix, ref kilometersTravelled, ref hasFinished, firstSpecialRow, firstSpecialCol, secondSpecialRow, secondSpecialCol);
+                        MovePlayer(ref newPlayerRow, ref newPlayerCol, matrix, ref kilometersTraveled, ref hasFinished, firstSpecialRow, firstSpecialCol, secondSpecialRow, secondSpecialCol);
                         
                         break;
                     case "right":
                         newPlayerCol++;
-                        MovePlayer(ref newPlayerRow, ref newPlayerCol, matrix, ref kilometersTravelled, ref hasFinished, firstSpecialRow, firstSpecialCol, secondSpecialRow, secondSpecialCol);
+                        MovePlayer(ref newPlayerRow, ref newPlayerCol, matrix, ref kilometersTraveled, ref hasFinished, firstSpecialRow, firstSpecialCol, secondSpecialRow, secondSpecialCol);
                         
                         break;
                 }                
                 if (hasFinished)
                 {
                     Console.WriteLine($"Racing car {carNumber} finished the stage!");
-                    Console.WriteLine($"Distance covered {kilometersTravelled} km.");
+                    Console.WriteLine($"Distance covered {kilometersTraveled} km.");
                     PrintMatrix(matrix);
                     return;
                 }
@@ -85,17 +85,17 @@ namespace _02.Rally_Racing
             }
             matrix[playerRow, playerCol] = 'C';
             Console.WriteLine($"Racing car {carNumber} DNF.");
-            Console.WriteLine($"Distance covered {kilometersTravelled} km.");
+            Console.WriteLine($"Distance covered {kilometersTraveled} km.");
             PrintMatrix(matrix);
 
         }
 
-        private static void MovePlayer(ref int newPlayerRow, ref int newPlayerCol, char[,] matrix, ref int kilometersTravelled, ref bool hasFinished, int firstSpecialRow, int firstSpecialCol, int secondSpecialRow, int secondSpecialCol)
+        private static void MovePlayer(ref int newPlayerRow, ref int newPlayerCol, char[,] matrix, ref int kilometersTraveled, ref bool hasFinished, int firstSpecialRow, int firstSpecialCol, int secondSpecialRow, int secondSpecialCol)
         {
             if (matrix[newPlayerRow, newPlayerCol] == 'T')
             {
                 matrix[newPlayerRow, newPlayerCol] = '.';
-                kilometersTravelled += 30;
+                kilometersTraveled += 30;
                 if (newPlayerRow == firstSpecialRow && newPlayerCol == firstSpecialCol)
                 {
                     newPlayerRow = secondSpecialRow;
@@ -110,13 +110,13 @@ namespace _02.Rally_Racing
             }
             else if (matrix[newPlayerRow, newPlayerCol] == 'F')
             {
-                kilometersTravelled += 10;
+                kilometersTraveled += 10;
                 hasFinished = true;
                 matrix[newPlayerRow, newPlayerCol] = 'C';
             }
             else
             {
-                kilometersTravelled += 10;                
+                kilometersTraveled += 10;                
             }
         }
         private static void PrintMatrix(char[,] matrix)
