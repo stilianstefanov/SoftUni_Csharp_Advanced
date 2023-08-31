@@ -7,13 +7,13 @@ namespace _02.Survivor
     {
         static void Main(string[] args)
         {
-            int rowsCnt = int.Parse(Console.ReadLine());
+            int rowsCnt = int.Parse(Console.ReadLine()!);
 
             char[][] jaggedArr = new char[rowsCnt][];
 
             for (int row = 0; row < rowsCnt; row++)
             {
-                char[] curRow = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                char[] curRow = Console.ReadLine()!.Split(' ', StringSplitOptions.RemoveEmptyEntries)
                     .Select(char.Parse)
                     .ToArray();
                 jaggedArr[row] = curRow;
@@ -25,7 +25,7 @@ namespace _02.Survivor
             string command;
             while ((command = Console.ReadLine()) != "Gong")
             {
-                string[] tokens = command.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                string[] tokens = command!.Split(" ", StringSplitOptions.RemoveEmptyEntries);
                 switch (tokens[0])
                 {
                     case "Find":
